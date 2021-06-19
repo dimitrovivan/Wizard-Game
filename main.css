@@ -323,6 +323,7 @@ input {
 .header__score-section {
   font-size: 2.2rem;
   margin-right: 4rem;
+  color: #00eeee;
 }
 
 .header__score-value {
