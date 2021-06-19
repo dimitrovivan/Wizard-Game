@@ -1,0 +1,37 @@
+.start-section {
+    max-width: 50%;
+    margin: 50px auto;
+    padding: 20px 20px 30px;
+    background: transparent;
+    border: 2px solid none;
+    border-radius: 5px;
+    color: $white-900;
+    box-shadow: 0px 0px 4px .5px $white-900;
+
+    &.hide {
+        transform: translateY(-500px);
+    }
+
+    &__heading {
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $blue-100;
+    }
+
+    &__btn {
+        margin: 50px auto 0;
+        padding: 1rem 3rem;
+        background-color: $green-300;
+        color: $black-900;
+        font-weight: 700;
+        border-radius: 10px;
+        letter-spacing: 1px;
+        transition: transform 1s;
+
+        &:hover {
+            box-shadow: 0px 5px 7px 1px $black-900;
+        }
+    }
+
+}

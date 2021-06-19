@@ -16,11 +16,33 @@
             <div class="header__logo-section">
                 <h4 class="header__logo">Wizzard Game</h4>
             </div>
-            <div class="header__score-section">Score:<span  class="header__score-value">0</span></div>
+            <div class="header__score-section">Score:<span class="header__score-value">0</span></div>
         </header>
 
         <main class="game-screen">
-            <button class="game-screen__start-btn">Start game</button>
+            <section class="start-section">
+                <h2 class="start-section__heading">Game Settings</h2>
+
+                <div class="keyboard-config">
+                    <section class="keyboard-config__movement-section">
+                        <h5 class="keyboard-config__movement-heading">Move</h5>
+                        <div class="keyboard-config__movement-inputs">
+                            <input type="text" class="key-w" value="w" maxlength="1" />
+                            <input type="text" class="key-a" value="a" maxlength="1" />
+                            <input type="text" class="key-d" value="d" maxlength="1" />
+                            <input type="text" class="key-s" value="s" maxlength="1" />
+                        </div>
+                    </section>
+
+                    <section class="keyboard-config__shoot-section">
+                        <h5 class="keyboard-config__shoot-heading">Shoot</h5>
+                        <div class="keyboard-config__shoot-inputs">
+                            <input type="text" class="key-shoot" value="p" maxlength="1" />
+                        </div>
+                    </section>
+                </div>
+                <button class="start-section__btn">Start game</button>
+            </section>
         </main>
     </div>
 </body>
