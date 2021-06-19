@@ -284,4 +284,9 @@ h6 {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.header {
+  padding: 2rem 5rem;
+  color: white;
+}
 /*# sourceMappingURL=main.css.map */
