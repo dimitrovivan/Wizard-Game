@@ -339,9 +339,14 @@ button:hover {
   font-weight: 700;
   border-radius: 10px;
   letter-spacing: 1px;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 .game-screen__start-btn.hide {
-  display: none;
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
 }
 /*# sourceMappingURL=main.css.map */

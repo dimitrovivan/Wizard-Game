@@ -9,9 +9,10 @@
         font-weight: 700;
         border-radius: 10px;
         letter-spacing: 1px;
+        transition: transform 1s;
 
         &.hide {
-            display: none;
+            transform: translateY(-200px);
         }
     }
 }
