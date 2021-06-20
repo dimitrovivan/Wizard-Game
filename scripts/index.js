@@ -37,6 +37,8 @@ window.addEventListener('keyup', onKeyUpDeleteCode);
 function onStartGame(e) {
     e.preventDefault();
     startSection.classList.add('hide');
+    saveUserKeyboardConfig();
+    console.log(validKeys);
     window.requestAnimationFrame(runOnFrame);
 }
 
@@ -64,6 +66,10 @@ function onAddKeyBoardValue(e) {
         }
         default: e.target.value = addKeyView(e.key.toLowerCase());
     }
+}
+
+function saveUserKeyboardConfig() {
+   allInputs.map(input => validKeys.push(input.value));
 }
 
 function IsValidKeyPressed(e) {
