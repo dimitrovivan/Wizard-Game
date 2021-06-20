@@ -46,7 +46,6 @@ function runOnFrame(timestamp) {
 function onClearInputValue(e) {
     if(e.target.tagName == 'INPUT') e.target.value = '';
     else return;
-    
 }
 
 function onAddKeyBoardValue(e) {
@@ -58,7 +57,6 @@ function onAddKeyBoardValue(e) {
              break;
         }
         default: e.target.value = addKeyView(e.key.toLowerCase());
-        
     }
 }
 
