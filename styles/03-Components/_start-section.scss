@@ -6,10 +6,9 @@
     border-radius: 5px;
     color: $white-900;
     box-shadow: 0px 0px 4px .5px $white-900;
-    transition: transform .5s;
 
     &.hide {
-        transform: translateY(-800px);
+        display: none;
     }
 
     &__heading {

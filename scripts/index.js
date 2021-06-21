@@ -1,9 +1,10 @@
 import { getKeyView, keyBoardAllowedControls } from './config/controls.js';
 import { saveKeyboardControllers, onKeyUpDeleteCode, onKeyDownSaveCode, runOnFrame } from './engine.js';
-
-const startSection = document.querySelector('.start-section');
-const startBtn = document.querySelector('.start-section__btn');
-const allInputs = Array.from(document.querySelectorAll('.start-section input'));
+import { getDomElements, createDomElement } from './domHandler.js';
+const gameScreen = getDomElements.gameScreen();
+const startSection = getDomElements.startSection();
+const startBtn = getDomElements.startBtn();
+const allInputs = getDomElements.allInputs();
 
 startSection.addEventListener('click', onClearInputValue);
 startSection.addEventListener('keydown', onAddKeyBoardValue)
@@ -45,9 +46,18 @@ function onStartGame(e) {
 
     startSection.classList.add('hide');
     saveKeyboardControllers(allInputValues);
+    showWizzard();
     window.requestAnimationFrame(runOnFrame);
 }
 
 function isValidAllInputsBeforeStart(values) {
     return values.some(value => value == '') ? false : true;
 }
+
+function showWizzard() {
+    let wizzard = createDomElement('div', 'asdasds', {"class": "wizzard"});
+    gameScreen.appendChild(wizzard);
+    console.log(wizzard);
+}
+
+
