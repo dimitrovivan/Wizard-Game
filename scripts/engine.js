@@ -1,6 +1,7 @@
 import { getKeyCode } from './config/controls.js';
 import { getDomElements, createDomElement} from './domHandler.js';
 import wizardConfig from './config/wizard.js';
+import fireballConfig from './config/fireball.js';
 
 const keys = {};
 const userGameControllers = [];
@@ -18,6 +19,7 @@ const boundries = {
 
 const runOnFrame = t1 => t2 => {
     move(t2);
+    moveAllFireballs();
     if (t2 - t1 > 500) {
         addScore(1);
         window.requestAnimationFrame(runOnFrame(t2));
@@ -55,6 +57,7 @@ function move(timestamp) {
     if (keys[getKeyCode(shoot)]) {
 
         if(timestamp - lastShot > 1000) {
+            createFireball();
             lastShot = timestamp;
         }
         wizard.classList.add('wizard--fire');
@@ -70,9 +73,32 @@ function move(timestamp) {
 
 }
 
+function createFireball() {
+    let fireball = createDomElement('div', '', {'class': 'fireball'});
+    fireball.style.left = `${wizardConfig.left + wizardConfig.width}px`;
+    fireball.style.top = `${wizardConfig.top + 15}px`;
+    gameScreen.appendChild(fireball);
+}
+
 function addScore(score) {
     let previousScore = Number(scoreElement.innerText);
     scoreElement.innerText = Number(score) + previousScore;
+}
+
+function moveAllFireballs() {
+    let allFireballs = getDomElements.fireballs();
+    if(allFireballs.length < 1) return;
+
+    Array.from(allFireballs).forEach(fireball => {
+        let previousPosition = Number(fireball.style.left.slice(0, -2));
+        let nextPosition = previousPosition + fireballConfig.speed;
+        
+        if(nextPosition > gameScreen.offsetWidth - fireball.offsetWidth) {
+            fireball.parentElement.removeChild(fireball);
+            return;
+        } 
+        fireball.style.left = `${nextPosition}px`;
+    })
 }
 
 export {

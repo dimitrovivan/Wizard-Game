@@ -5,7 +5,8 @@ const getDomElements = {
     allInputs: () => Array.from(document.querySelectorAll('.start-section input')),
     wizard: () => document.querySelector('.wizard'),
     header: () => document.querySelector('.header'),
-    score: () => document.querySelector('.header__score-value')
+    score: () => document.querySelector('.header__score-value'),
+    fireballs: () => document.querySelectorAll('.fireball'),
 }
 
 function createDomElement(tag, text, attributes = {}, children = []) {
