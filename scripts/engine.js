@@ -68,27 +68,23 @@ function levelCheck() {
     let date = new Date();
 
     if(date.getTime() - playTime > levels.first && !firstLevel) {
-        witchConfig.minTimeSpawn -= 200;
-        fireballConfig.timeLimit -= 200;
-        fireballConfig.speed += 2;
-        witchConfig.speed += 2;
-        wizardConfig.speed += 2;
+        changeDifficulty();
         firstLevel = true;
     } else if(date.getTime() - playTime > levels.second && !secondLevel) {
-        witchConfig.minTimeSpawn -= 150;
-        fireballConfig.timeLimit -= 150;
-        witchConfig.speed += 1;
-        fireballConfig.speed += 1;
-        wizardConfig.speed += 1;
+        changeDifficulty();
         secondLevel = true;
     } else if(date.getTime() -playTime > levels.third && !thirdLevel) {
-        witchConfig.minTimeSpawn -= 200;
-        fireballConfig.timeLimit -= 100;
-        witchConfig.speed += 2;
-        fireballConfig.speed += 2;
-        wizardConfig.speed += 2;
+        changeDifficulty();
         thirdLevel = true;
     }
+}
+
+function changeDifficulty() {
+    witchConfig.minTimeSpawn -= 200;
+    fireballConfig.timeLimit -= 100;
+    witchConfig.speed += 1.5;
+    fireballConfig.speed += 1.5;
+    wizardConfig.speed += 1.5;
 }
 
 function movePlayer() {
