@@ -48,7 +48,7 @@ function onStartGame(e) {
     startSection.classList.add('hide');
     saveKeyboardControllers(allInputValues);
     showWizzard();
-    window.requestAnimationFrame(runOnFrame);
+    window.requestAnimationFrame(runOnFrame(0));
 }
 
 function isValidAllInputsBeforeStart(values) {
