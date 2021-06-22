@@ -18,7 +18,8 @@ const boundries = {
 }
 
 const runOnFrame = t1 => t2 => {
-    move(t2);
+    movePlayer();
+    shoot(t2);
     moveAllFireballs();
     if (t2 - t1 > 500) {
         addScore(1);
@@ -44,33 +45,38 @@ function saveKeyboardControllers(keyboardControls) {
     keyboardControls.map(controller => userGameControllers.push(controller));
 }
 
-function move(timestamp) {
+function movePlayer() {
     let wizard = getDomElements.wizard();
-    let [up, left, right, down, shoot] = userGameControllers;
+    let [upKey, leftKey, rightKey, downKey] = userGameControllers;
     let isAtBottom = wizardConfig.top < boundries.bottom;
 
-    if (keys[getKeyCode(up)] && wizardConfig.top > boundries.top) wizardConfig.top -= wizardConfig.speed + 2;
-    if (keys[getKeyCode(down)] && wizardConfig.top < boundries.bottom) wizardConfig.top += wizardConfig.speed;
-    if (keys[getKeyCode(left)] && wizardConfig.left > boundries.left) wizardConfig.left -= wizardConfig.speed;
-    if (keys[getKeyCode(right)] && wizardConfig.left < boundries.right) wizardConfig.left += wizardConfig.speed;
-
-    if (keys[getKeyCode(shoot)]) {
-
-        if(timestamp - lastShot > 1000) {
-            createFireball();
-            lastShot = timestamp;
-        }
-        wizard.classList.add('wizard--fire');
-  
-    } else {
-        wizard.classList.remove('wizard--fire');
-    }
-
+    if (keys[getKeyCode(upKey)] && wizardConfig.top > boundries.top) wizardConfig.top -= wizardConfig.speed + 2;
+    if (keys[getKeyCode(downKey)] && wizardConfig.top < boundries.bottom) wizardConfig.top += wizardConfig.speed;
+    if (keys[getKeyCode(leftKey)] && wizardConfig.left > boundries.left) wizardConfig.left -= wizardConfig.speed;
+    if (keys[getKeyCode(rightKey)] && wizardConfig.left < boundries.right) wizardConfig.left += wizardConfig.speed;
 
     if (isAtBottom) wizardConfig.top += 2;
     wizard.style.top = `${wizardConfig.top}px`;
     wizard.style.left = `${wizardConfig.left}px`;
 
+}
+
+function shoot(timestamp) {
+    let wizard = getDomElements.wizard();
+    let shootKey = userGameControllers[4];
+    let isShootingAvaiable = (timestamp - lastShot) > 1000;
+
+    if (keys[getKeyCode(shootKey)]) {
+        wizard.classList.add('wizard--fire');
+
+        if(isShootingAvaiable) {
+            createFireball();
+            lastShot = timestamp;
+        }
+
+    } else {
+        wizard.classList.remove('wizard--fire');
+    }
 }
 
 function createFireball() {
@@ -92,7 +98,7 @@ function moveAllFireballs() {
     Array.from(allFireballs).forEach(fireball => {
         let previousPosition = Number(fireball.style.left.slice(0, -2));
         let nextPosition = previousPosition + fireballConfig.speed;
-        
+
         if(nextPosition > gameScreen.offsetWidth - fireball.offsetWidth) {
             fireball.parentElement.removeChild(fireball);
             return;
