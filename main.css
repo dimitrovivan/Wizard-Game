@@ -436,8 +436,6 @@ input {
 
 .wizard {
   position: absolute;
-  width: 60px;
-  height: 70px;
   background: url("../../images/wizard.png");
   background-repeat: no-repeat;
   background-size: cover;

@@ -57,9 +57,11 @@ function isValidAllInputsBeforeStart(values) {
 
 function showWizzard() {
     let wizard = createDomElement('div', '', {'class': 'wizard'});
+    wizard.style.width = `${wizardConfig.width}px`;
+    wizard.style.height = `${wizardConfig.height}px`;
+    wizard.style.top = `${wizardConfig.top}px`;
+    wizard.style.left = `${wizardConfig.left}px`;
     gameScreen.appendChild(wizard);
-    wizard.style.top = `${wizardConfig.top}px`
-    wizard.style.left = `${wizardConfig.left}px`
 }
 
 

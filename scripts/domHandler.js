@@ -3,7 +3,8 @@ const getDomElements = {
     startSection: () => document.querySelector('.start-section'),
     startBtn: () => document.querySelector('.start-section__btn'),
     allInputs: () => Array.from(document.querySelectorAll('.start-section input')),
-    wizard: () => document.querySelector('.wizard')
+    wizard: () => document.querySelector('.wizard'),
+    header: () => document.querySelector('.header')
 }
 
 function createDomElement(tag, text, attributes = {}, children = []) {
