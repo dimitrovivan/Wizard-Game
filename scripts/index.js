@@ -1,4 +1,5 @@
 import { getKeyView, keyBoardAllowedControls } from './config/controls.js';
+import wizardConfig from './config/wizard.js';
 import { saveKeyboardControllers, onKeyUpDeleteCode, onKeyDownSaveCode, runOnFrame } from './engine.js';
 import { getDomElements, createDomElement } from './domHandler.js';
 const gameScreen = getDomElements.gameScreen();
@@ -55,8 +56,10 @@ function isValidAllInputsBeforeStart(values) {
 }
 
 function showWizzard() {
-    let wizardContainer = createDomElement('div', '', {'class': 'wizard'});
-    gameScreen.appendChild(wizardContainer);
+    let wizard = createDomElement('div', '', {'class': 'wizard'});
+    gameScreen.appendChild(wizard);
+    wizard.style.top = `${wizardConfig.top}px`
+    wizard.style.left = `${wizardConfig.left}px`
 }
 
 

@@ -21,8 +21,24 @@ function getKeyView(key) {
     return keyView;
 }
 
+function getKeyCode(keyView) {
+    let keyCode;
+
+    switch (keyView) {
+        case '\u2191': keyCode = 'ArrowUp'; break;
+        case '\u2193': keyCode = 'ArrowDown'; break;
+        case '\u2190': keyCode = 'ArrowLeft'; break;
+        case '\u2192': keyCode = 'ArrowRight'; break;
+        case 'space': keyCode = ' '; break;
+        default: keyCode = keyView;
+    }
+
+    return keyCode;
+}
+
 export {
     keyBoardAllowedControls,
     getKeyView,
+    getKeyCode
 }
 
