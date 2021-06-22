@@ -263,6 +263,7 @@ summary {
 }
 
 body {
+  overflow: hidden;
   font-family: consolas;
   font-size: 1.8rem;
 }
@@ -335,6 +336,7 @@ input {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  overflow: hidden;
 }
 
 .start-section {
@@ -453,5 +455,14 @@ input {
   background-repeat: no-repeat;
   width: 30px;
   height: 30px;
+}
+
+.witch {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../images/witch.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /*# sourceMappingURL=main.css.map */

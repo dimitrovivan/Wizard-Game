@@ -2,6 +2,7 @@ import { getKeyCode } from './config/controls.js';
 import { getDomElements, createDomElement} from './domHandler.js';
 import wizardConfig from './config/wizard.js';
 import fireballConfig from './config/fireball.js';
+import witchConfig from './config/witch.js';
 
 const keys = {};
 const userGameControllers = [];
@@ -9,6 +10,7 @@ const headerElement = getDomElements.header();
 const gameScreen = getDomElements.gameScreen();
 const scoreElement = getDomElements.score();
 let lastShot = 0;
+let lastSpawnedWitch = 0;
 
 const boundries = {
     top: headerElement.offsetHeight,
@@ -21,10 +23,14 @@ const runOnFrame = t1 => t2 => {
     movePlayer();
     shoot(t2);
     moveAllFireballs();
+    moveAllWitches();
+    randomWitchSpawn(t2);
+
     if (t2 - t1 > 500) {
         addScore(1);
         window.requestAnimationFrame(runOnFrame(t2));
-    } else {
+    } 
+    else {
         window.requestAnimationFrame(runOnFrame(t1));
     }
 }
@@ -105,6 +111,39 @@ function moveAllFireballs() {
         } 
         fireball.style.left = `${nextPosition}px`;
     })
+}
+
+function createWitch(){
+    let witch = createDomElement('div', '', {'class': 'witch'})
+    let randomTop = (gameScreen.offsetHeight - witchConfig.height) * Math.random() + witchConfig.height / 2;
+    witch.style.left = `${gameScreen.offsetWidth + witchConfig.width}px`;
+    witch.style.top = `${randomTop}px`;
+    gameScreen.appendChild(witch);
+}
+
+function moveAllWitches() {
+    let allWitches = getDomElements.witches();
+    if(allWitches.length < 1) return;
+
+    Array.from(allWitches).forEach(witch => {
+        let previousPosition = Number(witch.style.left.slice(0, -2));
+        let nextPosition = previousPosition - witchConfig.speed;
+
+        if(nextPosition < 0) {
+            witch.parentElement.removeChild(witch);
+            return;
+        } 
+        witch.style.left = `${nextPosition}px`;
+    })
+}
+
+function randomWitchSpawn(timestamp) {
+    let randomInterval = (lastSpawnedWitch * Math.random() + 900 + Math.random() * 300);
+
+    if((timestamp - lastSpawnedWitch) > randomInterval) {
+        createWitch();
+        lastSpawnedWitch = timestamp;
+    }
 }
 
 export {
