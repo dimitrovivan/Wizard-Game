@@ -1,7 +1,11 @@
 .wizard {
     position: absolute;
-    background: url('../../images/wizard.png');
+    background-image: url("../../images/wizard.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 5px;
+
+    &--fire {
+        background-image: url("../../images/wizard-fire.png");
+    }
 }

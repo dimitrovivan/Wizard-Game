@@ -1,5 +1,5 @@
 import { getKeyCode } from './config/controls.js';
-import { getDomElements } from './domHandler.js';
+import { getDomElements, createDomElement} from './domHandler.js';
 import wizardConfig from './config/wizard.js';
 
 const keys = {};
@@ -7,6 +7,7 @@ const userGameControllers = [];
 const headerElement = getDomElements.header();
 const gameScreen = getDomElements.gameScreen();
 const scoreElement = getDomElements.score();
+let lastShot = 0;
 
 const boundries = {
     top: headerElement.offsetHeight,
@@ -16,8 +17,7 @@ const boundries = {
 }
 
 const runOnFrame = t1 => t2 => {
-    console.log(userGameControllers);
-    move();
+    move(t2);
     if (t2 - t1 > 500) {
         addScore(1);
         window.requestAnimationFrame(runOnFrame(t2));
@@ -42,7 +42,7 @@ function saveKeyboardControllers(keyboardControls) {
     keyboardControls.map(controller => userGameControllers.push(controller));
 }
 
-function move() {
+function move(timestamp) {
     let wizard = getDomElements.wizard();
     let [up, left, right, down, shoot] = userGameControllers;
     let isAtBottom = wizardConfig.top < boundries.bottom;
@@ -51,6 +51,18 @@ function move() {
     if (keys[getKeyCode(down)] && wizardConfig.top < boundries.bottom) wizardConfig.top += wizardConfig.speed;
     if (keys[getKeyCode(left)] && wizardConfig.left > boundries.left) wizardConfig.left -= wizardConfig.speed;
     if (keys[getKeyCode(right)] && wizardConfig.left < boundries.right) wizardConfig.left += wizardConfig.speed;
+
+    if (keys[getKeyCode(shoot)]) {
+
+        if(timestamp - lastShot > 1000) {
+            lastShot = timestamp;
+        }
+        wizard.classList.add('wizard--fire');
+  
+    } else {
+        wizard.classList.remove('wizard--fire');
+    }
+
 
     if (isAtBottom) wizardConfig.top += 2;
     wizard.style.top = `${wizardConfig.top}px`;
