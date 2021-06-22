@@ -1,6 +1,6 @@
 import { getKeyView, keyBoardAllowedControls } from './config/controls.js';
 import wizardConfig from './config/wizard.js';
-import { saveKeyboardControllers, onKeyUpDeleteCode, onKeyDownSaveCode, runOnFrame } from './engine.js';
+import { saveKeyboardControllers, onKeyUpDeleteCode, onKeyDownSaveCode, runGame } from './engine.js';
 import { getDomElements, createDomElement } from './domHandler.js';
 const gameScreen = getDomElements.gameScreen();
 const startSection = getDomElements.startSection();
@@ -48,7 +48,7 @@ function onStartGame(e) {
     startSection.classList.add('hide');
     saveKeyboardControllers(allInputValues);
     showWizzard();
-    window.requestAnimationFrame(runOnFrame(0));
+    window.requestAnimationFrame(runGame);
 }
 
 function isValidAllInputsBeforeStart(values) {

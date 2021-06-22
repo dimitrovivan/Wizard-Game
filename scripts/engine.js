@@ -3,6 +3,7 @@ import { getDomElements, createDomElement} from './domHandler.js';
 import wizardConfig from './config/wizard.js';
 import fireballConfig from './config/fireball.js';
 import witchConfig from './config/witch.js';
+import levels from './config/levels.js';
 
 const keys = {};
 const userGameControllers = [];
@@ -11,6 +12,11 @@ const gameScreen = getDomElements.gameScreen();
 const scoreElement = getDomElements.score();
 let lastShot = 0;
 let lastSpawnedWitch = 0;
+let playTime;
+let firstLevel = false;
+let secondLevel = false;
+let thirdLevel = false;
+
 
 const boundries = {
     top: headerElement.offsetHeight,
@@ -19,12 +25,19 @@ const boundries = {
     bottom: gameScreen.offsetHeight - wizardConfig.height / 2
 }
 
+function runGame() {
+    playTime = new Date().getTime();
+    window.requestAnimationFrame(runOnFrame(0));
+}
+
 const runOnFrame = t1 => t2 => {
+    
     movePlayer();
     shoot(t2);
     moveAllFireballs();
     moveAllWitches();
     randomWitchSpawn(t2);
+    levelCheck();
 
     if (t2 - t1 > 500) {
         addScore(1);
@@ -51,6 +64,33 @@ function saveKeyboardControllers(keyboardControls) {
     keyboardControls.map(controller => userGameControllers.push(controller));
 }
 
+function levelCheck() {
+    let date = new Date();
+
+    if(date.getTime() - playTime > levels.first && !firstLevel) {
+        witchConfig.minTimeSpawn -= 200;
+        fireballConfig.timeLimit -= 200;
+        fireballConfig.speed += 2;
+        witchConfig.speed += 2;
+        wizardConfig.speed += 2;
+        firstLevel = true;
+    } else if(date.getTime() - playTime > levels.second && !secondLevel) {
+        witchConfig.minTimeSpawn -= 150;
+        fireballConfig.timeLimit -= 150;
+        witchConfig.speed += 1;
+        fireballConfig.speed += 1;
+        wizardConfig.speed += 1;
+        secondLevel = true;
+    } else if(date.getTime() -playTime > levels.third && !thirdLevel) {
+        witchConfig.minTimeSpawn -= 200;
+        fireballConfig.timeLimit -= 100;
+        witchConfig.speed += 2;
+        fireballConfig.speed += 2;
+        wizardConfig.speed += 2;
+        thirdLevel = true;
+    }
+}
+
 function movePlayer() {
     let wizard = getDomElements.wizard();
     let [upKey, leftKey, rightKey, downKey] = userGameControllers;
@@ -70,7 +110,7 @@ function movePlayer() {
 function shoot(timestamp) {
     let wizard = getDomElements.wizard();
     let shootKey = userGameControllers[4];
-    let isShootingAvaiable = (timestamp - lastShot) > 1000;
+    let isShootingAvaiable = (timestamp - lastShot) > fireballConfig.timeLimit;
 
     if (keys[getKeyCode(shootKey)]) {
         wizard.classList.add('wizard--fire');
@@ -138,7 +178,7 @@ function moveAllWitches() {
 }
 
 function randomWitchSpawn(timestamp) {
-    let randomInterval = (lastSpawnedWitch * Math.random() + 900 + Math.random() * 300);
+    let randomInterval = (lastSpawnedWitch * Math.random() + witchConfig.minTimeSpawn + Math.random() * 300);
 
     if((timestamp - lastSpawnedWitch) > randomInterval) {
         createWitch();
@@ -147,7 +187,7 @@ function randomWitchSpawn(timestamp) {
 }
 
 export {
-    runOnFrame,
+    runGame,
     saveKeyboardControllers,
     onKeyDownSaveCode,
     onKeyUpDeleteCode
