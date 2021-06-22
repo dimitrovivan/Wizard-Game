@@ -433,4 +433,14 @@ input {
   -ms-grid-column-align: center;
       justify-self: center;
 }
+
+.wizard {
+  position: absolute;
+  width: 60px;
+  height: 70px;
+  background: url("../../images/wizard.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 5px;
+}
 /*# sourceMappingURL=main.css.map */

@@ -55,9 +55,8 @@ function isValidAllInputsBeforeStart(values) {
 }
 
 function showWizzard() {
-    let wizzard = createDomElement('div', 'asdasds', {"class": "wizzard"});
-    gameScreen.appendChild(wizzard);
-    console.log(wizzard);
+    let wizardContainer = createDomElement('div', '', {'class': 'wizard'});
+    gameScreen.appendChild(wizardContainer);
 }
 
 
