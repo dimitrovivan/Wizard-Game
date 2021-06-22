@@ -16,6 +16,7 @@ const boundries = {
 }
 
 const runOnFrame = t1 => t2 => {
+    console.log(userGameControllers);
     move();
     if (t2 - t1 > 500) {
         addScore(1);
@@ -25,47 +26,46 @@ const runOnFrame = t1 => t2 => {
     }
 }
 
+function IsValidKeyPressed(e) {
+    return userGameControllers.find(controller => e.key == getKeyCode(controller)) ? true : false;
+}
 
-    function IsValidKeyPressed(e) {
-        return userGameControllers.find(controller => e.key == controller) ? true : false;
-    }
+function onKeyDownSaveCode(e) {
+    if (IsValidKeyPressed(e)) keys[e.key] = true;
+}
 
-    function onKeyDownSaveCode(e) {
-        if (IsValidKeyPressed(e)) keys[e.key] = true;
-    }
+function onKeyUpDeleteCode(e) {
+    if (IsValidKeyPressed(e)) keys[e.key] = false;
+}
 
-    function onKeyUpDeleteCode(e) {
-        if (IsValidKeyPressed(e)) keys[e.key] = false;
-    }
+function saveKeyboardControllers(keyboardControls) {
+    keyboardControls.map(controller => userGameControllers.push(controller));
+}
 
-    function saveKeyboardControllers(keyboardControls) {
-        keyboardControls.map(controller => userGameControllers.push(controller));
-    }
+function move() {
+    let wizard = getDomElements.wizard();
+    let [up, left, right, down, shoot] = userGameControllers;
+    let isAtBottom = wizardConfig.top < boundries.bottom;
 
-    function move() {
-        let wizard = getDomElements.wizard();
-        let [up, left, right, down, shoot] = userGameControllers;
-        let isAtBottom = wizardConfig.top < boundries.bottom;
+    if (keys[getKeyCode(up)] && wizardConfig.top > boundries.top) wizardConfig.top -= wizardConfig.speed + 2;
+    if (keys[getKeyCode(down)] && wizardConfig.top < boundries.bottom) wizardConfig.top += wizardConfig.speed;
+    if (keys[getKeyCode(left)] && wizardConfig.left > boundries.left) wizardConfig.left -= wizardConfig.speed;
+    if (keys[getKeyCode(right)] && wizardConfig.left < boundries.right) wizardConfig.left += wizardConfig.speed;
 
-        if (keys[getKeyCode(up)] && wizardConfig.top > boundries.top) wizardConfig.top -= wizardConfig.speed + 2;
-        if (keys[getKeyCode(down)] && wizardConfig.top < boundries.bottom) wizardConfig.top += wizardConfig.speed;
-        if (keys[getKeyCode(left)] && wizardConfig.left > boundries.left) wizardConfig.left -= wizardConfig.speed;
-        if (keys[getKeyCode(right)] && wizardConfig.left < boundries.right) wizardConfig.left += wizardConfig.speed;
+    if (isAtBottom) wizardConfig.top += 2;
+    wizard.style.top = `${wizardConfig.top}px`;
+    wizard.style.left = `${wizardConfig.left}px`;
 
-        if (isAtBottom) wizardConfig.top += 2;
-        wizard.style.top = `${wizardConfig.top}px`;
-        wizard.style.left = `${wizardConfig.left}px`;
+}
 
-    }
+function addScore(score) {
+    let previousScore = Number(scoreElement.innerText);
+    scoreElement.innerText = Number(score) + previousScore;
+}
 
-    function addScore(score) {
-        let previousScore = Number(scoreElement.innerText);
-        scoreElement.innerText = Number(score) + previousScore;
-    }
-
-    export {
-        runOnFrame,
-        saveKeyboardControllers,
-        onKeyDownSaveCode,
-        onKeyUpDeleteCode
-    }
+export {
+    runOnFrame,
+    saveKeyboardControllers,
+    onKeyDownSaveCode,
+    onKeyUpDeleteCode
+}

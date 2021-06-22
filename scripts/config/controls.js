@@ -25,10 +25,10 @@ function getKeyCode(keyView) {
     let keyCode;
 
     switch (keyView) {
-        case '\u2191': keyCode = 'ArrowUp'; break;
-        case '\u2193': keyCode = 'ArrowDown'; break;
-        case '\u2190': keyCode = 'ArrowLeft'; break;
-        case '\u2192': keyCode = 'ArrowRight'; break;
+        case '↑': keyCode = 'ArrowUp'; break;
+        case '↓': keyCode = 'ArrowDown'; break;
+        case '←': keyCode = 'ArrowLeft'; break;
+        case '→': keyCode = 'ArrowRight'; break;
         case 'space': keyCode = ' '; break;
         default: keyCode = keyView;
     }
