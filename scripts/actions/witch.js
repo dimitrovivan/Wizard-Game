@@ -1,5 +1,7 @@
+import baseConfig from '../config/base.js';
 import witchConfig from '../config/witch.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
+import { isCollision } from '../collision.js';
 
 const gameScreen = getDomElements.gameScreen();
 
@@ -18,6 +20,8 @@ function moveAllWitches() {
     allWitches.forEach(witch => {
         let previousPosition = Number(witch.style.left.slice(0, -2));
         let nextPosition = previousPosition - witchConfig.speed;
+
+        if(isCollision(getDomElements.wizard(), witch)) baseConfig.isActiveGame = false;
 
         if(nextPosition < 0) {
             witch.parentElement.removeChild(witch);

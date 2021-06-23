@@ -1,3 +1,4 @@
+import baseConfig from './config/base.js';
 import { getDomElements } from './domHandler.js';
 import { randomWitchSpawn, moveAllWitches } from './actions/witch.js';
 import { levelCheck } from './actions/levels.js';
@@ -21,6 +22,8 @@ const runOnFrame = t1 => t2 => {
     moveAllWitches();
     lastSpawnedWitch = randomWitchSpawn(t2, lastSpawnedWitch);
     levelCheck(playTime);
+
+    if(!baseConfig.isActiveGame) return;
     
     if (t2 - t1 > 500) {
         addScore(1);
