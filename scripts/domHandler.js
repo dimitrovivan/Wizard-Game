@@ -6,8 +6,8 @@ const getDomElements = {
     wizard: () => document.querySelector('.wizard'),
     header: () => document.querySelector('.header'),
     score: () => document.querySelector('.header__score-value'),
-    fireballs: () => document.querySelectorAll('.fireball'),
-    witches: () => document.querySelectorAll('.witch'),
+    fireballs: () => Array.from(document.querySelectorAll('.fireball')),
+    witches: () => Array.from(document.querySelectorAll('.witch')),
 }
 
 function createDomElement(tag, text, attributes = {}, children = []) {

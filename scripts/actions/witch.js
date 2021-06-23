@@ -15,7 +15,7 @@ function moveAllWitches() {
     let allWitches = getDomElements.witches();
     if(allWitches.length < 1) return;
 
-    Array.from(allWitches).forEach(witch => {
+    allWitches.forEach(witch => {
         let previousPosition = Number(witch.style.left.slice(0, -2));
         let nextPosition = previousPosition - witchConfig.speed;
 

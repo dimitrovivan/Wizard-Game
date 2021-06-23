@@ -21,7 +21,7 @@ const runOnFrame = t1 => t2 => {
     moveAllWitches();
     lastSpawnedWitch = randomWitchSpawn(t2, lastSpawnedWitch);
     levelCheck(playTime);
-
+    
     if (t2 - t1 > 500) {
         addScore(1);
         window.requestAnimationFrame(runOnFrame(t2));

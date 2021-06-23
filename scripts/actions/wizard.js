@@ -37,7 +37,7 @@ function moveAllFireballs() {
     let allFireballs = getDomElements.fireballs();
     if(allFireballs.length < 1) return;
 
-    Array.from(allFireballs).forEach(fireball => {
+   allFireballs.forEach(fireball => {
         let previousPosition = Number(fireball.style.left.slice(0, -2));
         let nextPosition = previousPosition + fireballConfig.speed;
 
