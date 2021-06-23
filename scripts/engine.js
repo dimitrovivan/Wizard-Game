@@ -4,7 +4,7 @@ import { randomWitchSpawn, moveAllWitches, removeAllWitches } from './actions/wi
 import { levelCheck } from './actions/levels.js';
 import { shoot, moveAllFireballs, removeAllFireballs, removeWizard } from './actions/wizard.js';
 import { movePlayer } from './actions/controls.js';
-import { addScore } from './inGameAction.js';
+import { addScore } from './actions/ingameInteraction.js';
 
 let lastShoot = 0;
 let lastSpawnedWitch = 0;

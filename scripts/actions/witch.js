@@ -1,7 +1,7 @@
 import witchConfig from '../config/witch.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { isCollision } from '../collision.js';
-import { subtractHealth } from '../inGameAction.js';
+import { subtractHealth } from './ingameInteraction.js';
 
 const gameScreen = getDomElements.gameScreen();
 let lastWitchHit = 0;

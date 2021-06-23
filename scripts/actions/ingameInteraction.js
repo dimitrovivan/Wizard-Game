@@ -1,4 +1,4 @@
-import { getDomElements } from "./domHandler.js";
+import { getDomElements } from "../domHandler.js";
 
 const scoreElement = getDomElements.score();
 const healthElement = getDomElements.health();
