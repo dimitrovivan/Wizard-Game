@@ -31,7 +31,6 @@ function runGame() {
 }
 
 const runOnFrame = t1 => t2 => {
-    
     movePlayer();
     shoot(t2);
     moveAllFireballs();
@@ -80,7 +79,7 @@ function levelCheck() {
 }
 
 function changeDifficulty() {
-    witchConfig.minTimeSpawn -= 200;
+    witchConfig.minTimeSpawn -= 250;
     fireballConfig.timeLimit -= 100;
     witchConfig.speed += 1.5;
     fireballConfig.speed += 1.5;
@@ -100,7 +99,6 @@ function movePlayer() {
     if (isAtBottom) wizardConfig.top += 2;
     wizard.style.top = `${wizardConfig.top}px`;
     wizard.style.left = `${wizardConfig.left}px`;
-
 }
 
 function shoot(timestamp) {
@@ -174,9 +172,7 @@ function moveAllWitches() {
 }
 
 function randomWitchSpawn(timestamp) {
-    let randomInterval = (lastSpawnedWitch * Math.random() + witchConfig.minTimeSpawn + Math.random() * 300);
-
-    if((timestamp - lastSpawnedWitch) > randomInterval) {
+    if((timestamp - lastSpawnedWitch) > witchConfig.minTimeSpawn + (500 * Math.random()) + 300) {
         createWitch();
         lastSpawnedWitch = timestamp;
     }

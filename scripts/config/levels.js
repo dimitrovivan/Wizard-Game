@@ -1,7 +1,7 @@
 const levels = {
-    first: 3000,
-    second: 6000,
-    third: 12000
+    first: 30000,
+    second: 60000,
+    third: 120000
 }
 
 export default levels;
