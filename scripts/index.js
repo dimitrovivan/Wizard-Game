@@ -7,6 +7,9 @@ import { runGame } from './engine.js';
 const startSection = getDomElements.startSection();
 const startBtn = getDomElements.startBtn();
 const allInputs = getDomElements.allInputs();
+const healthSection = getDomElements.healthSection();
+const logo = getDomElements.logo();
+const scoreSection = getDomElements.scoreSection();
 
 startSection.addEventListener('click', onClearInputValue);
 startSection.addEventListener('keydown', onAddKeyBoardValue)
@@ -47,6 +50,9 @@ function onStartGame(e) {
     window.addEventListener('keydown', onKeyDownSaveCode);
 
     startSection.classList.add('hide');
+    logo.classList.add('hide');
+    healthSection.classList.add('appear');
+    scoreSection.classList.add('appear');
     saveKeyboardControllers(allInputValues);
     showWizard();
     window.requestAnimationFrame(runGame);

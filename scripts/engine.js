@@ -4,7 +4,7 @@ import { randomWitchSpawn, moveAllWitches, removeAllWitches } from './actions/wi
 import { levelCheck } from './actions/levels.js';
 import { shoot, moveAllFireballs, removeAllFireballs, removeWizard } from './actions/wizard.js';
 import { movePlayer } from './actions/controls.js';
-import { addScore } from './score.js';
+import { addScore } from './inGameAction.js';
 
 let lastShoot = 0;
 let lastSpawnedWitch = 0;
@@ -19,7 +19,7 @@ const runOnFrame = t1 => t2 => {
     movePlayer();
     lastShoot = shoot(t2, lastShoot);
     moveAllFireballs();
-    moveAllWitches();
+    moveAllWitches(t2);
     lastSpawnedWitch = randomWitchSpawn(t2, lastSpawnedWitch);
     levelCheck(playTime);
  

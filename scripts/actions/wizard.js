@@ -4,7 +4,7 @@ import {userGameControllers, getKeyCode} from '../config/controls.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { keys } from './controls.js';
 import { isCollision } from '../collision.js';
-import { addScore } from '../score.js';
+import { addScore } from '../inGameAction.js';
 
 const gameScreen = getDomElements.gameScreen();
 

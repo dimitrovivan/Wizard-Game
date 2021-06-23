@@ -1,8 +1,10 @@
 import witchConfig from '../config/witch.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { isCollision } from '../collision.js';
+import { subtractHealth } from '../inGameAction.js';
 
 const gameScreen = getDomElements.gameScreen();
+let lastWitchHit = 0;
 
 function createWitch(){
     let witch = createDomElement('div', '', {'class': 'witch'})
@@ -12,7 +14,7 @@ function createWitch(){
     gameScreen.appendChild(witch);
 }
 
-function moveAllWitches() {
+function moveAllWitches(timestamp) {
     let allWitches = getDomElements.witches();
     if(allWitches.length < 1) return;
 
@@ -20,9 +22,11 @@ function moveAllWitches() {
         let previousPosition = Number(witch.style.left.slice(0, -2));
         let nextPosition = previousPosition - witchConfig.speed;
 
-        if(isCollision(getDomElements.wizard(), witch)) {
-            //baseConfig.health -= 25;
+        if(isCollision(getDomElements.wizard(), witch) && timestamp - lastWitchHit > 1000) {
+            subtractHealth(25);
+            lastWitchHit = timestamp;
         }
+
         if(nextPosition < 0) {
             witch.parentElement.removeChild(witch);
             return;
