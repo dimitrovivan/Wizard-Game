@@ -6,6 +6,8 @@ const keyBoardAllowedControls = [
     'arrowleft', 'arrowright'
 ];
 
+const userGameControllers = [];
+
 function getKeyView(key) {
     let keyView;
 
@@ -36,9 +38,15 @@ function getKeyCode(keyView) {
     return keyCode;
 }
 
+function saveKeyboardControllers(keyboardControls) {
+    keyboardControls.map(controller => userGameControllers.push(controller));
+}
+
 export {
     keyBoardAllowedControls,
+    userGameControllers,
     getKeyView,
-    getKeyCode
+    getKeyCode,
+    saveKeyboardControllers
 }
 

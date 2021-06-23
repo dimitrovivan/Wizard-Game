@@ -1,8 +1,9 @@
-import { getKeyView, keyBoardAllowedControls } from './config/controls.js';
-import wizardConfig from './config/wizard.js';
-import { saveKeyboardControllers, onKeyUpDeleteCode, onKeyDownSaveCode, runGame } from './engine.js';
-import { getDomElements, createDomElement } from './domHandler.js';
-const gameScreen = getDomElements.gameScreen();
+import { getKeyView, keyBoardAllowedControls, saveKeyboardControllers } from './config/controls.js';
+import { getDomElements } from './domHandler.js';
+import { showWizard } from './actions/wizard.js';
+import { onKeyDownSaveCode, onKeyUpDeleteCode } from './actions/controls.js';
+import { runGame } from './engine.js';
+
 const startSection = getDomElements.startSection();
 const startBtn = getDomElements.startBtn();
 const allInputs = getDomElements.allInputs();
@@ -47,21 +48,11 @@ function onStartGame(e) {
 
     startSection.classList.add('hide');
     saveKeyboardControllers(allInputValues);
-    showWizzard();
+    showWizard();
     window.requestAnimationFrame(runGame);
 }
 
 function isValidAllInputsBeforeStart(values) {
     return values.some(value => value == '') ? false : true;
 }
-
-function showWizzard() {
-    let wizard = createDomElement('div', '', {'class': 'wizard'});
-    wizard.style.width = `${wizardConfig.width}px`;
-    wizard.style.height = `${wizardConfig.height}px`;
-    wizard.style.top = `${wizardConfig.top}px`;
-    wizard.style.left = `${wizardConfig.left}px`;
-    gameScreen.appendChild(wizard);
-}
-
 
