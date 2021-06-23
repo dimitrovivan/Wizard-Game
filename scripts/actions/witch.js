@@ -1,4 +1,3 @@
-import baseConfig from '../config/base.js';
 import witchConfig from '../config/witch.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { isCollision } from '../collision.js';
@@ -21,8 +20,9 @@ function moveAllWitches() {
         let previousPosition = Number(witch.style.left.slice(0, -2));
         let nextPosition = previousPosition - witchConfig.speed;
 
-        if(isCollision(getDomElements.wizard(), witch)) baseConfig.isActiveGame = false;
-
+        if(isCollision(getDomElements.wizard(), witch)) {
+            //baseConfig.health -= 25;
+        }
         if(nextPosition < 0) {
             witch.parentElement.removeChild(witch);
             return;
