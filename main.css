@@ -322,9 +322,26 @@ input {
 }
 
 .header__score-section {
+  display: none;
   font-size: 2.2rem;
   margin-right: 4rem;
   color: #00eeee;
+}
+
+.header__score-section.appear {
+  display: block;
+}
+
+.header__health-section {
+  display: none;
+}
+
+.header__health-section.appear {
+  display: block;
+}
+
+.header__logo.hide {
+  display: none;
 }
 
 .header__score-value {

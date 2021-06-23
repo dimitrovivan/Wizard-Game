@@ -8,9 +8,29 @@
 
 
     &__score-section {
+        display: none;
         font-size: 2.2rem;
         margin-right: 4rem;
         color: $blue-300;
+
+        &.appear {
+            display: block;
+        }
+    }
+
+    &__health-section {
+        display: none;
+
+        &.appear {
+            display: block;
+        }
+    }
+
+    &__logo {
+
+        &.hide {
+            display: none;
+        }
     }
 
     &__score-value {
