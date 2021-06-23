@@ -1,3 +1,4 @@
+import baseConfig from '../config/base.js'
 import { getDomElements } from "../domHandler.js";
 
 const scoreElement = getDomElements.score();
@@ -13,13 +14,19 @@ function subtractScore(score) {
     if(previousScore - score > 0) scoreElement.innerText = previousScore - Number(score);
 }
 
+function getScore() {
+    return scoreElement.innerText;
+}
+
 function subtractHealth(num) {
     let previousHealth = Number(healthElement.innerText);
-    if(previousHealth - num >= 0) healthElement.innerText = previousHealth - Number(num);
+    if(previousHealth - num > 0) healthElement.innerText = previousHealth - Number(num);
+    else baseConfig.isActiveGame = false;
 }
 
 export {
     addScore,
     subtractScore,
-    subtractHealth
+    getScore,
+    subtractHealth,
 }

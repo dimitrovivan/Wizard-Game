@@ -4,7 +4,7 @@ import { randomWitchSpawn, moveAllWitches, removeAllWitches } from './actions/wi
 import { levelCheck } from './actions/levels.js';
 import { shoot, moveAllFireballs, removeAllFireballs, removeWizard } from './actions/wizard.js';
 import { movePlayer } from './actions/controls.js';
-import { addScore } from './actions/ingameInteraction.js';
+import { addScore, getScore } from './actions/ingameInteraction.js';
 
 let lastShoot = 0;
 let lastSpawnedWitch = 0;
@@ -52,7 +52,7 @@ function showGameOver() {
     let minutes = Math.floor((playedTime % 3600) / 60);
     let seconds = playedTime % 60;
     playedTimeSection.innerText = `${hours > 0 ? hours + ':': ''}${minutes > 0 ? minutes + ':': ''}${seconds}s`;
-    finalScoreSection.innerText = scoreElement.innerText;
+    finalScoreSection.innerText = getScore();
     gameOverSection.classList.add('appear');
 }
 
