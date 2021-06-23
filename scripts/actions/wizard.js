@@ -1,8 +1,10 @@
+import baseConfig from '../config/base.js';
 import wizardConfig from '../config/wizard.js';
 import fireballConfig from '../config/fireball.js';
 import {userGameControllers, getKeyCode} from '../config/controls.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { keys } from './controls.js';
+import { checkCollectionForCollision } from '../collision.js';
 
 const gameScreen = getDomElements.gameScreen();
 
@@ -40,6 +42,8 @@ function moveAllFireballs() {
    allFireballs.forEach(fireball => {
         let previousPosition = Number(fireball.style.left.slice(0, -2));
         let nextPosition = previousPosition + fireballConfig.speed;
+
+        if(checkCollectionForCollision.witches(fireball)) baseConfig.isActiveGame = false;
 
         if(nextPosition > gameScreen.offsetWidth - fireball.offsetWidth) {
             fireball.parentElement.removeChild(fireball);

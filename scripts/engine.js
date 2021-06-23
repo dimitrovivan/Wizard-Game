@@ -59,7 +59,6 @@ function showGameOver() {
     playedTimeSection.innerText = `${hours > 0 ? hours + ':': ''}${minutes > 0 ? minutes + ':': ''}${seconds}s`;
     finalScoreSection.innerText = scoreElement.innerText;
     gameOverSection.classList.add('appear');
-    
 }
 
 export {
