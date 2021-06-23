@@ -1,6 +1,7 @@
 const getDomElements = {
     gameScreen: () => document.querySelector('.game-screen'),
     startSection: () => document.querySelector('.start-section'),
+    gameOverSection: () => document.querySelector('.game-over'),
     startBtn: () => document.querySelector('.start-section__btn'),
     allInputs: () => Array.from(document.querySelectorAll('.start-section input')),
     wizard: () => document.querySelector('.wizard'),

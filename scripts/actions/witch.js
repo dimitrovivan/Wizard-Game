@@ -40,8 +40,13 @@ function randomWitchSpawn(timestamp, lastSpawnedWitch) {
     return lastSpawnedWitch;
 }
 
+function removeAllWitches() {
+     getDomElements.witches().forEach(witch => witch.parentElement.removeChild(witch));
+}
+
 export {
     createWitch,
     moveAllWitches,
-    randomWitchSpawn
+    randomWitchSpawn,
+    removeAllWitches
 }

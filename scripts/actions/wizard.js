@@ -58,9 +58,22 @@ function showWizard() {
     gameScreen.appendChild(wizard);
 }
 
+function removeWizard() {
+    let wizard = getDomElements.wizard();
+    wizard.parentElement.removeChild(wizard);
+}
+
+function removeAllFireballs() {
+    getDomElements.fireballs().forEach(fireball => fireball.parentElement.removeChild(fireball));
+    
+}
+
+
 
 export {
     moveAllFireballs,
     shoot,
     showWizard,
+    removeWizard,
+    removeAllFireballs
 }

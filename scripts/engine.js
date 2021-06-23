@@ -1,8 +1,8 @@
 import baseConfig from './config/base.js';
 import { getDomElements } from './domHandler.js';
-import { randomWitchSpawn, moveAllWitches } from './actions/witch.js';
+import { randomWitchSpawn, moveAllWitches, removeAllWitches } from './actions/witch.js';
 import { levelCheck } from './actions/levels.js';
-import { shoot, moveAllFireballs } from './actions/wizard.js';
+import { shoot, moveAllFireballs, removeAllFireballs, removeWizard } from './actions/wizard.js';
 import { movePlayer } from './actions/controls.js';
 
 const scoreElement = getDomElements.score();
@@ -22,8 +22,17 @@ const runOnFrame = t1 => t2 => {
     moveAllWitches();
     lastSpawnedWitch = randomWitchSpawn(t2, lastSpawnedWitch);
     levelCheck(playTime);
+ 
+    if(!baseConfig.isActiveGame) {
+        setTimeout( () => {
+            removeAllWitches();
+            removeWizard();
+            removeAllFireballs();
+            showGameOver();
+        } , 1500)
 
-    if(!baseConfig.isActiveGame) return;
+        return;
+    }
     
     if (t2 - t1 > 500) {
         addScore(1);
@@ -37,6 +46,13 @@ const runOnFrame = t1 => t2 => {
 function addScore(score) {
     let previousScore = Number(scoreElement.innerText);
     scoreElement.innerText = Number(score) + previousScore;
+}
+
+function showGameOver() {
+    let gameOverSection = getDomElements.gameOverSection();
+    let finalScoreSection = gameOverSection.querySelector('.game-over-section__final-score');
+    finalScoreSection.innerText = scoreElement.innerText;
+    gameOverSection.classList.add('appear');
 }
 
 export {
