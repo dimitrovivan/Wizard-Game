@@ -49,10 +49,17 @@ function addScore(score) {
 }
 
 function showGameOver() {
+    let playedTime = Math.ceil((Number(new Date().getTime()) - Number(playTime)) / 1000);
     let gameOverSection = getDomElements.gameOverSection();
-    let finalScoreSection = gameOverSection.querySelector('.game-over-section__final-score');
+    let finalScoreSection = gameOverSection.querySelector('.game-over__score-value');
+    let playedTimeSection = gameOverSection.querySelector('.game-over__time-value');
+    let hours = Math.floor(playedTime / 3600);
+    let minutes = Math.floor((playedTime % 3600) / 60);
+    let seconds = playedTime % 60;
+    playedTimeSection.innerText = `${hours > 0 ? hours + ':': ''}${minutes > 0 ? minutes + ':': ''}${seconds}s`;
     finalScoreSection.innerText = scoreElement.innerText;
     gameOverSection.classList.add('appear');
+    
 }
 
 export {

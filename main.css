@@ -380,6 +380,55 @@ input {
           box-shadow: 0px 5px 7px 1px black;
 }
 
+.game-over {
+  display: none;
+  padding: 20px;
+  margin: 50px auto;
+  background: none;
+  width: 50%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 6px 2px black;
+          box-shadow: 0px 0px 6px 2px black;
+  text-align: center;
+  color: white;
+}
+
+.game-over__heading {
+  margin-bottom: 30px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ad2626;
+}
+
+.game-over__score-section {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.game-over__time-section {
+  font-size: 2rem;
+  margin-top: 15px;
+}
+
+.game-over__score-value, .game-over__time-value {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.game-over__play-btn {
+  padding: 10px 30px;
+  margin: 50px auto 0;
+  background: none;
+  border: 1px solid #00c500;
+  border-radius: 6px;
+  color: #00c500;
+  font-weight: 600;
+}
+
+.game-over.appear {
+  display: block;
+}
+
 .keyboard-config {
   max-width: 80%;
   margin: 0 auto;
