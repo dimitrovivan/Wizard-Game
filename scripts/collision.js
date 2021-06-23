@@ -15,10 +15,10 @@ function isCollision(firstElement, secondElement) {
    let secondRec = secondElement.getBoundingClientRect();
 
    if(!(
-      firstRec.top > secondRec.bottom ||
-      firstRec.bottom < secondRec.top ||
-      firstRec.right < secondRec.left ||
-      firstRec.left > secondRec.right
+      firstRec.top + 20 > secondRec.bottom ||
+      firstRec.bottom - 10 < secondRec.top ||
+      firstRec.right - 20 < secondRec.left ||
+      firstRec.left + 20 > secondRec.right
    )) return true;
 
    return false;
