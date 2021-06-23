@@ -1,9 +1,10 @@
 import { getKeyCode } from './config/controls.js';
-import { getDomElements, createDomElement} from './domHandler.js';
 import wizardConfig from './config/wizard.js';
 import fireballConfig from './config/fireball.js';
-import witchConfig from './config/witch.js';
-import levels from './config/levels.js';
+
+import { getDomElements, createDomElement} from './domHandler.js';
+import { randomWitchSpawn, moveAllWitches } from './actions/witch.js';
+import { levelCheck } from './actions/levels.js';
 
 const keys = {};
 const userGameControllers = [];
@@ -13,10 +14,6 @@ const scoreElement = getDomElements.score();
 let lastShot = 0;
 let lastSpawnedWitch = 0;
 let playTime;
-let firstLevel = false;
-let secondLevel = false;
-let thirdLevel = false;
-
 
 const boundries = {
     top: headerElement.offsetHeight,
@@ -35,8 +32,8 @@ const runOnFrame = t1 => t2 => {
     shoot(t2);
     moveAllFireballs();
     moveAllWitches();
-    randomWitchSpawn(t2);
-    levelCheck();
+    lastSpawnedWitch = randomWitchSpawn(t2, lastSpawnedWitch);
+    levelCheck(playTime);
 
     if (t2 - t1 > 500) {
         addScore(1);
@@ -61,29 +58,6 @@ function onKeyUpDeleteCode(e) {
 
 function saveKeyboardControllers(keyboardControls) {
     keyboardControls.map(controller => userGameControllers.push(controller));
-}
-
-function levelCheck() {
-    let date = new Date();
-
-    if(date.getTime() - playTime > levels.first && !firstLevel) {
-        changeDifficulty();
-        firstLevel = true;
-    } else if(date.getTime() - playTime > levels.second && !secondLevel) {
-        changeDifficulty();
-        secondLevel = true;
-    } else if(date.getTime() -playTime > levels.third && !thirdLevel) {
-        changeDifficulty();
-        thirdLevel = true;
-    }
-}
-
-function changeDifficulty() {
-    witchConfig.minTimeSpawn -= 250;
-    fireballConfig.timeLimit -= 100;
-    witchConfig.speed += 1.5;
-    fireballConfig.speed += 1.5;
-    wizardConfig.speed += 1.5;
 }
 
 function movePlayer() {
@@ -145,37 +119,6 @@ function moveAllFireballs() {
         } 
         fireball.style.left = `${nextPosition}px`;
     })
-}
-
-function createWitch(){
-    let witch = createDomElement('div', '', {'class': 'witch'})
-    let randomTop = (gameScreen.offsetHeight - witchConfig.height) * Math.random() + witchConfig.height / 2;
-    witch.style.left = `${gameScreen.offsetWidth + witchConfig.width}px`;
-    witch.style.top = `${randomTop}px`;
-    gameScreen.appendChild(witch);
-}
-
-function moveAllWitches() {
-    let allWitches = getDomElements.witches();
-    if(allWitches.length < 1) return;
-
-    Array.from(allWitches).forEach(witch => {
-        let previousPosition = Number(witch.style.left.slice(0, -2));
-        let nextPosition = previousPosition - witchConfig.speed;
-
-        if(nextPosition < 0) {
-            witch.parentElement.removeChild(witch);
-            return;
-        } 
-        witch.style.left = `${nextPosition}px`;
-    })
-}
-
-function randomWitchSpawn(timestamp) {
-    if((timestamp - lastSpawnedWitch) > witchConfig.minTimeSpawn + (500 * Math.random()) + 300) {
-        createWitch();
-        lastSpawnedWitch = timestamp;
-    }
 }
 
 export {
