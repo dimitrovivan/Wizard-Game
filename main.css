@@ -504,6 +504,7 @@ input {
 
 .wizard {
   position: absolute;
+  z-index: 2;
   background-image: url("../../images/wizard.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -525,6 +526,7 @@ input {
 
 .witch {
   position: absolute;
+  z-index: 1;
   width: 70px;
   height: 70px;
   background-image: url("../../images/witch.png");
