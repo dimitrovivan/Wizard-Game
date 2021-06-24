@@ -9,6 +9,10 @@
     text-align: center;
     color: $white-900;
 
+    @include for-phone-only {
+        width: 80%;
+    }
+
     &__heading {
         margin-bottom: 30px;
         font-size: 4rem;

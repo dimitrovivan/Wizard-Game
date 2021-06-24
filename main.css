@@ -417,6 +417,12 @@ input {
   color: white;
 }
 
+@media (max-width: 599px) {
+  .game-over {
+    width: 80%;
+  }
+}
+
 .game-over__heading {
   margin-bottom: 30px;
   font-size: 4rem;
