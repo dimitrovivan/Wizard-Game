@@ -2,7 +2,7 @@ const collisionExtraRectSettings = {
     wizard: {
         top: 20,
         bottom: -10,
-        right: -20,
+        right: 20,
         left: 20
     },
     fireball: {
