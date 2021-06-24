@@ -8,6 +8,7 @@ const getDomElements = {
     scoreSection: () => document.querySelector('.header__score-section'),
     gameOverSection: () => document.querySelector('.game-over'),
     startBtn: () => document.querySelector('.start-section__btn'),
+    tryAgainBtn: () => document.querySelector('.game-over__play-btn'),
     allInputs: () => Array.from(document.querySelectorAll('.start-section input')),
     wizard: () => document.querySelector('.wizard'),
     header: () => document.querySelector('.header'),

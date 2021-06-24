@@ -3,17 +3,23 @@ import { getDomElements } from './domHandler.js';
 import { showWizard } from './actions/wizard.js';
 import { onKeyDownSaveCode, onKeyUpDeleteCode } from './actions/controls.js';
 import { runGame } from './engine.js';
+import baseConfig from './config/base.js';
 
 const startSection = getDomElements.startSection();
+const gameOverSection = getDomElements.gameOverSection();
 const startBtn = getDomElements.startBtn();
+const tryAgainBtn = getDomElements.tryAgainBtn();
 const allInputs = getDomElements.allInputs();
 const healthSection = getDomElements.healthSection();
+const health = getDomElements.health();
 const logo = getDomElements.logo();
 const scoreSection = getDomElements.scoreSection();
+const score = getDomElements.score();
 
 startSection.addEventListener('click', onClearInputValue);
 startSection.addEventListener('keydown', onAddKeyBoardValue)
 startBtn.addEventListener('click', onStartGame);
+tryAgainBtn.addEventListener('click', onTryAgain);
 
 function onClearInputValue(e) {
     if (e.target.tagName == 'INPUT') e.target.value = '';
@@ -36,6 +42,13 @@ function onAddKeyBoardValue(e) {
     }
 }
 
+function onTryAgain(e) {
+    e.preventDefault();
+    gameOverSection.classList.remove('appear');
+    logo.classList.remove('hide');
+    startSection.classList.remove('hide');
+}
+
 function onStartGame(e) {
     e.preventDefault();
 
@@ -54,6 +67,9 @@ function onStartGame(e) {
     healthSection.classList.add('appear');
     scoreSection.classList.add('appear');
     saveKeyboardControllers(allInputValues);
+    health.innerText = 100;
+    baseConfig.isActiveGame = true;
+    score.innerText = 0;
     showWizard();
     window.requestAnimationFrame(runGame);
 }

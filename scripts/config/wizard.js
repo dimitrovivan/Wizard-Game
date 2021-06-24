@@ -1,6 +1,7 @@
 import baseConfig from './base.js';
 
 const wizardConfig = {
+    health: 100,
     width: 60,
     height: 70,
     top: 300,
