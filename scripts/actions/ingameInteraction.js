@@ -21,7 +21,10 @@ function getScore() {
 function subtractHealth(num) {
     let previousHealth = Number(healthElement.innerText);
     if(previousHealth - num > 0) healthElement.innerText = previousHealth - Number(num);
-    else baseConfig.isActiveGame = false;
+    else {
+        healthElement.innerText = 0;
+        baseConfig.isActiveGame = false;
+    }
 }
 
 export {
