@@ -1,38 +1,27 @@
-import wizardConfig from '../config/wizard.js';
 import fireballConfig from '../config/fireball.js';
 import witchConfig from '../config/witch.js';
 import levels from '../config/levels.js';
-
-const levelPassed = {
-    firstLevel: false,
-    secondLevel: false,
-    thirdLevel: false
-}
+import baseConfig from '../config/base.js';
 
 function levelCheck(playTime) {
     let date = new Date();
 
-    if(date.getTime() - playTime > levels.first && !levelPassed.firstLevel) {
-        console.log(1);
+    if(date.getTime() - playTime > levels.firstLevelTime && !levels.isPassedFirstLevel) {
         changeDifficulty();
-        levelPassed.firstLevel = true;
-    } else if(date.getTime() - playTime > levels.second && !levelPassed.secondLevel) {
-        console.log(2);
+        levels.isPassedFirstLevel = true;
+    } else if(date.getTime() - playTime > levels.secondLevelTime && !levels.isPassedSecondLevel) {
         changeDifficulty();
-        levelPassed.secondLevel = true;
-    } else if(date.getTime() - playTime > levels.third && !levelPassed.thirdLevel) {
-        console.log(3);
+        levels.isPassedSecondLevel = true;
+    } else if(date.getTime() - playTime > levels.thirdLevelTime && !levels.isPassedThirdLevel) {
         changeDifficulty();
-        levelPassed.thirdLevel = true;
+        levels.isPassedThirdLevel = true;
     }
 }
 
 function changeDifficulty() {
     witchConfig.minTimeSpawn -= 250;
     fireballConfig.timeLimit -= 100;
-    witchConfig.speed += 1.5;
-    fireballConfig.speed += 1.5;
-    wizardConfig.speed += 1.5;
+    baseConfig.SPEED_MULTIPLIER += 1;
 }
 
 export {

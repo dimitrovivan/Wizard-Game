@@ -1,7 +1,7 @@
 const collisionExtraRectSettings = {
     wizard: {
         top: 20,
-        bottom: -10,
+        bottom: 10,
         right: 20,
         left: 20
     },

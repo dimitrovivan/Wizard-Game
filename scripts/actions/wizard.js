@@ -41,7 +41,7 @@ function moveAllFireballs() {
 
    allFireballs.forEach(fireball => {
         let previousPosition = Number(fireball.style.left.slice(0, -2));
-        let nextPosition = previousPosition + fireballConfig.speed;
+        let nextPosition = previousPosition + fireballConfig.getSpeed();
 
         getDomElements.witches().forEach(witch => {
             if(!isCollision(witch, fireball)) return;

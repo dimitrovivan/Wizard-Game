@@ -1,7 +1,10 @@
 const levels = {
-    first: 30000,
-    second: 60000,
-    third: 120000
+    firstLevelTime: 30000,
+    secondLevelTime: 60000,
+    thirdLevelTime: 120000,
+    isPassedFirstLevel: false,
+    isPassedSecondLevel: false,
+    isPassedThirdLevel: false,
 }
 
 export default levels;

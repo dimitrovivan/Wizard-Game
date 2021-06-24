@@ -20,7 +20,7 @@ function moveAllWitches(timestamp) {
 
     allWitches.forEach(witch => {
         let previousPosition = Number(witch.style.left.slice(0, -2));
-        let nextPosition = previousPosition - witchConfig.speed;
+        let nextPosition = previousPosition - witchConfig.getSpeed();
 
         if(isCollision(getDomElements.wizard(), witch) && timestamp - lastWitchHit > 1000) {
             subtractHealth(25);

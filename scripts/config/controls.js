@@ -5,8 +5,11 @@ const keyBoardAllowedControls = [
     'v', 'w', 'x', 'y', 'z', 'h', ' ', 'arrowup', 'arrowdown',
     'arrowleft', 'arrowright'
 ];
+let userGameControllers = [];
 
-const userGameControllers = [];
+function resetUserGameControllers() {
+    userGameControllers = [];
+}
 
 function getKeyView(key) {
     let keyView;
@@ -45,6 +48,7 @@ function saveKeyboardControllers(keyboardControls) {
 export {
     keyBoardAllowedControls,
     userGameControllers,
+    resetUserGameControllers,
     getKeyView,
     getKeyCode,
     saveKeyboardControllers

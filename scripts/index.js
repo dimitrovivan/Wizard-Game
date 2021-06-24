@@ -1,9 +1,13 @@
-import { getKeyView, keyBoardAllowedControls, saveKeyboardControllers } from './config/controls.js';
+import { getKeyView, keyBoardAllowedControls, saveKeyboardControllers, resetUserGameControllers } from './config/controls.js';
 import { getDomElements } from './domHandler.js';
 import { showWizard } from './actions/wizard.js';
-import { onKeyDownSaveCode, onKeyUpDeleteCode } from './actions/controls.js';
+import { onKeyDownSaveCode, onKeyUpDeleteCode, resetKeys} from './actions/controls.js';
 import { runGame } from './engine.js';
 import baseConfig from './config/base.js';
+import witchConfig from './config/witch.js';
+import fireballConfig from './config/fireball.js';
+import levels from './config/levels.js';
+import wizardConfig from './config/wizard.js';
 
 const startSection = getDomElements.startSection();
 const gameOverSection = getDomElements.gameOverSection();
@@ -52,6 +56,7 @@ function onTryAgain(e) {
 function onStartGame(e) {
     e.preventDefault();
 
+    resetInitialSettings();
     const allInputValues = allInputs.reduce((acc, curr) => {
         acc.push(curr.value);
         return acc;
@@ -67,11 +72,24 @@ function onStartGame(e) {
     healthSection.classList.add('appear');
     scoreSection.classList.add('appear');
     saveKeyboardControllers(allInputValues);
-    health.innerText = 100;
-    baseConfig.isActiveGame = true;
-    score.innerText = 0;
     showWizard();
     window.requestAnimationFrame(runGame);
+}
+
+function resetInitialSettings() {
+    score.innerText = 0;
+    health.innerText = 100;
+    baseConfig.isActiveGame = true;
+    baseConfig.SPEED_MULTIPLIER = 2;
+    witchConfig.minTimeSpawn = 1000;
+    fireballConfig.timeLimit = 1000;
+    wizardConfig.top = 300,
+    wizardConfig.left = 150,
+    levels.isPassedFirstLevel = false;
+    levels.isPassedSecondLevel = false;
+    levels.isPassedThirdLevel = false;
+    resetUserGameControllers();
+    resetKeys();
 }
 
 function isValidAllInputsBeforeStart(values) {
