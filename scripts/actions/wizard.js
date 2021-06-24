@@ -5,6 +5,7 @@ import { getDomElements, createDomElement } from '../domHandler.js';
 import { keys } from './controls.js';
 import { isCollision } from '../collision.js';
 import { addScore } from '../actions/ingameInteraction.js';
+import { fireballThrowSound } from '../sounds.js';
 
 const gameScreen = getDomElements.gameScreen();
 
@@ -17,6 +18,7 @@ function shoot(timestamp, lastShoot) {
         wizard.classList.add('wizard--fire');
 
         if(isShootingAvaiable) {
+            fireballThrowSound.play();
             createFireball();
             lastShoot = timestamp;
         }
@@ -76,8 +78,6 @@ function removeAllFireballs() {
     getDomElements.fireballs().forEach(fireball => fireball.parentElement.removeChild(fireball));
     
 }
-
-
 
 export {
     moveAllFireballs,

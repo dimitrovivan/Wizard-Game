@@ -3,11 +3,14 @@ import { getDomElements } from './domHandler.js';
 import { showWizard } from './actions/wizard.js';
 import { onKeyDownSaveCode, onKeyUpDeleteCode, resetKeys} from './actions/controls.js';
 import { runGame } from './engine.js';
+import { loadSounds } from './sounds.js';
 import baseConfig from './config/base.js';
 import witchConfig from './config/witch.js';
 import fireballConfig from './config/fireball.js';
 import levels from './config/levels.js';
 import wizardConfig from './config/wizard.js';
+
+loadSounds();
 
 const startSection = getDomElements.startSection();
 const gameOverSection = getDomElements.gameOverSection();
@@ -95,4 +98,3 @@ function resetInitialSettings() {
 function isValidAllInputsBeforeStart(values) {
     return values.some(value => value == '') ? false : true;
 }
-
