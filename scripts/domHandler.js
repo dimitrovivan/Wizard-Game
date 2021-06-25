@@ -3,6 +3,7 @@ const getDomElements = {
     startSection: () => document.querySelector('.start-section'),
     health: () => document.querySelector('.header__health-value'),
     healthSection: () => document.querySelector('.header__health-section'),
+    healthExtraInfo: () => document.querySelector('.header__health-extra-info'),
     logo: () => document.querySelector('.header__logo'),
     score: () => document.querySelector('.header__score-value'),
     scoreSection: () => document.querySelector('.header__score-section'),

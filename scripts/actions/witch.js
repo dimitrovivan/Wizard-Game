@@ -1,7 +1,7 @@
 import witchConfig from '../config/witch.js';
 import { getDomElements, createDomElement } from '../domHandler.js';
 import { isCollision } from '../collision.js';
-import { subtractHealth } from './ingameInteraction.js';
+import { subtractHealth, showAdditionalHealthInfo, hideAdditionalHealthSection } from './ingameInteraction.js';
 
 const gameScreen = getDomElements.gameScreen();
 let lastWitchHit = 0;
@@ -23,7 +23,9 @@ function moveAllWitches(timestamp) {
         let nextPosition = previousPosition - witchConfig.getSpeed();
 
         if(isCollision(getDomElements.wizard(), witch) && timestamp - lastWitchHit > 1000) {
+            showAdditionalHealthInfo(-25);
             subtractHealth(25);
+            hideAdditionalHealthSection(500);
             lastWitchHit = timestamp;
         }
 

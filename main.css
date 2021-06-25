@@ -340,6 +340,16 @@ input {
   display: block;
 }
 
+.header__health-extra-info {
+  display: none;
+  margin-left: 5px;
+  color: red;
+}
+
+.header__health-extra-info.appear {
+  display: inline-block;
+}
+
 .header__logo.hide {
   display: none;
 }

@@ -26,6 +26,16 @@
         }
     }
 
+    &__health-extra-info {
+        display: none;
+        margin-left: 5px;
+        color: red;
+
+        &.appear {
+            display: inline-block;
+        }
+    }
+
     &__logo {
 
         &.hide {

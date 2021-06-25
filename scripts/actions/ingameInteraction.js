@@ -3,6 +3,7 @@ import { getDomElements } from "../domHandler.js";
 
 const scoreElement = getDomElements.score();
 const healthElement = getDomElements.health();
+const healthExtraInfo = getDomElements.healthExtraInfo();
 
 function addScore(score) {
     let previousScore = Number(scoreElement.innerText);
@@ -27,9 +28,22 @@ function subtractHealth(num) {
     }
 }
 
+function showAdditionalHealthInfo(text) {
+    healthExtraInfo.innerText = text;
+    healthExtraInfo.classList.add('appear')
+}
+
+function hideAdditionalHealthSection(afterSeconds = 0) {
+    setTimeout( () => {
+      healthExtraInfo.classList.remove('appear');
+    }, afterSeconds)
+}
+
 export {
     addScore,
     subtractScore,
     getScore,
     subtractHealth,
+    showAdditionalHealthInfo,
+    hideAdditionalHealthSection
 }
