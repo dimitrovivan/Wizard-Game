@@ -5,7 +5,7 @@ import { getDomElements, createDomElement } from '../domHandler.js';
 import { keys } from './controls.js';
 import { isCollision } from '../collision.js';
 import { addScore } from '../actions/ingameInteraction.js';
-import { fireballThrowSound } from '../sounds.js';
+import { fireballThrowSound, killWitchSound } from '../sounds.js';
 
 const gameScreen = getDomElements.gameScreen();
 
@@ -47,6 +47,7 @@ function moveAllFireballs() {
 
         getDomElements.witches().forEach(witch => {
             if(!isCollision(witch, fireball)) return;
+            killWitchSound.play();
             witch.parentElement.removeChild(witch);
             fireball.parentElement.removeChild(fireball);
             addScore(10);
