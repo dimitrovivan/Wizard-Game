@@ -296,7 +296,7 @@ input {
 .page-wrapper {
   min-height: 100vh;
   max-height: 100vh;
-  background: url("../../images/space.jpg");
+  background: url("https://dimitrovivan.github.io/Wizard-Game/images/space.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: -webkit-box;
@@ -552,19 +552,19 @@ input {
 .wizard {
   position: absolute;
   z-index: 2;
-  background-image: url("../../images/wizard.png");
+  background-image: url("https://dimitrovivan.github.io/Wizard-Game/images/wizard.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 5px;
 }
 
 .wizard--fire {
-  background-image: url("../../images/wizard-fire.png");
+  background-image: url("https://dimitrovivan.github.io/Wizard-Game/images/wizard-fire.png");
 }
 
 .fireball {
   position: absolute;
-  background: url("../../images/fireball.png");
+  background: url("https://dimitrovivan.github.io/Wizard-Game/images/fireball.png");
   background-size: cover;
   background-repeat: no-repeat;
   width: 30px;
@@ -576,7 +576,7 @@ input {
   z-index: 1;
   width: 70px;
   height: 70px;
-  background-image: url("../../images/witch.png");
+  background-image: url("https://dimitrovivan.github.io/Wizard-Game/images/witch.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

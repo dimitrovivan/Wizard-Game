@@ -3,9 +3,9 @@ let punchSound;
 let killWitchSound;
 
 function loadSounds() {
-  fireballThrowSound = new Audio('./scripts/sounds/fireballThrow.mp3');
-  punchSound = new Audio('./scripts/sounds/punchSound.mp3');
-  killWitchSound = new Audio('./scripts/sounds/killWitch.mp3');
+  fireballThrowSound = new Audio('./sounds/fireballThrow.mp3');
+  punchSound = new Audio('./sounds/punchSound.mp3');
+  killWitchSound = new Audio('./sounds/killWitch.mp3');
 }
 
 export {
