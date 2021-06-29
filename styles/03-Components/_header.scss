@@ -12,35 +12,20 @@
         font-size: 2.2rem;
         margin-right: 4rem;
         color: $blue-300;
+    }
 
-        &.appear {
-            display: block;
-        }
+    &__shop-section {
+         display: none;
     }
 
     &__health-section {
         display: none;
-
-        &.appear {
-            display: block;
-        }
     }
 
     &__health-extra-info {
         display: none;
         margin-left: 5px;
         color: red;
-
-        &.appear {
-            display: inline-block;
-        }
-    }
-
-    &__logo {
-
-        &.hide {
-            display: none;
-        }
     }
 
     &__score-value {

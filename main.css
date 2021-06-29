@@ -328,30 +328,18 @@ input {
   color: #00eeee;
 }
 
-.header__score-section.appear {
-  display: block;
+.header__shop-section {
+  display: none;
 }
 
 .header__health-section {
   display: none;
 }
 
-.header__health-section.appear {
-  display: block;
-}
-
 .header__health-extra-info {
   display: none;
   margin-left: 5px;
   color: red;
-}
-
-.header__health-extra-info.appear {
-  display: inline-block;
-}
-
-.header__logo.hide {
-  display: none;
 }
 
 .header__score-value {
@@ -382,10 +370,6 @@ input {
     max-width: 80%;
     margin: 30px auto;
   }
-}
-
-.start-section.hide {
-  display: none;
 }
 
 .start-section__heading {
@@ -463,10 +447,6 @@ input {
   border-radius: 6px;
   color: #00c500;
   font-weight: 600;
-}
-
-.game-over.appear {
-  display: block;
 }
 
 .keyboard-config {
@@ -579,5 +559,13 @@ input {
   background-image: url("https://dimitrovivan.github.io/Wizard-Game/images/witch.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.appear {
+  display: inline-block;
+}
+
+.hide {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
