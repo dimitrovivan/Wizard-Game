@@ -6,16 +6,26 @@
     font-weight: 800;
     letter-spacing: .7px;
 
-
     &__score-section {
         display: none;
         font-size: 2.2rem;
-        margin-right: 4rem;
+        margin: 0 4rem;
         color: $blue-300;
     }
 
     &__shop-section {
          display: none;
+    }
+
+    &__shop-btn {
+        padding: 4px 16px;
+        background-color: $blue-500;
+        color: $white-900;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        font-size: 1.8rem;
     }
 
     &__health-section {

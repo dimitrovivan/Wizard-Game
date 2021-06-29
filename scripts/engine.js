@@ -6,6 +6,7 @@ import { shoot, moveAllFireballs, removeAllFireballs, removeWizard } from './act
 import { movePlayer } from './actions/controls.js';
 import { addScore, getScore } from './actions/ingameInteraction.js';
 
+const shopSection = getDomElements.shopSection();
 const scoreElement = getDomElements.scoreSection();
 const healthSection = getDomElements.healthSection();
 let lastShoot = 0;
@@ -55,6 +56,7 @@ function showGameOver() {
     let seconds = playedTime % 60;
     playedTimeSection.innerText = `${hours > 0 ? hours + ':': ''}${minutes > 0 ? minutes + ':': ''}${seconds}s`;
     finalScoreSection.innerText = getScore();
+    shopSection.classList.remove('appear-inline-block');
     healthSection.classList.remove('appear-inline-block');
     scoreElement.classList.remove('appear-inline-block'); 
     gameOverSection.classList.add('appear-block');

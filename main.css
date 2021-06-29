@@ -324,12 +324,23 @@ input {
 .header__score-section {
   display: none;
   font-size: 2.2rem;
-  margin-right: 4rem;
+  margin: 0 4rem;
   color: #00eeee;
 }
 
 .header__shop-section {
   display: none;
+}
+
+.header__shop-btn {
+  padding: 4px 16px;
+  background-color: #01B0DB;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 
 .header__health-section {

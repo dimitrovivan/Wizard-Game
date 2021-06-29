@@ -13,6 +13,8 @@ import wizardConfig from './config/wizard.js';
 loadSounds();
 
 const startSection = getDomElements.startSection();
+const shopSection = getDomElements.shopSection();
+const shopBtn = getDomElements.shopBtn();
 const gameOverSection = getDomElements.gameOverSection();
 const startBtn = getDomElements.startBtn();
 const tryAgainBtn = getDomElements.tryAgainBtn();
@@ -74,6 +76,7 @@ function onStartGame(e) {
     logo.classList.add('hide');
     healthSection.classList.add('appear-inline-block');
     scoreSection.classList.add('appear-inline-block');
+    shopSection.classList.add('appear-inline-block');
     saveKeyboardControllers(allInputValues);
     showWizard();
     window.requestAnimationFrame(runGame);

@@ -1,6 +1,8 @@
 const getDomElements = {
     gameScreen: () => document.querySelector('.game-screen'),
     startSection: () => document.querySelector('.start-section'),
+    shopBtn: () => document.querySelector('.header__shop-btn'),
+    shopSection: () => document.querySelector('.header__shop-section'),
     health: () => document.querySelector('.header__health-value'),
     healthSection: () => document.querySelector('.header__health-section'),
     healthExtraInfo: () => document.querySelector('.header__health-extra-info'),
