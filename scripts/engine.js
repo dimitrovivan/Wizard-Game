@@ -55,9 +55,9 @@ function showGameOver() {
     let seconds = playedTime % 60;
     playedTimeSection.innerText = `${hours > 0 ? hours + ':': ''}${minutes > 0 ? minutes + ':': ''}${seconds}s`;
     finalScoreSection.innerText = getScore();
-    healthSection.classList.remove('appear');
-    scoreElement.classList.remove('appear'); 
-    gameOverSection.classList.add('appear');
+    healthSection.classList.remove('appear-inline-block');
+    scoreElement.classList.remove('appear-inline-block'); 
+    gameOverSection.classList.add('appear-block');
 }
 
 export {

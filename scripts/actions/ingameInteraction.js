@@ -30,12 +30,12 @@ function subtractHealth(num) {
 
 function showAdditionalHealthInfo(text) {
     healthExtraInfo.innerText = text;
-    healthExtraInfo.classList.add('appear')
+    healthExtraInfo.classList.add('appear-inline-block')
 }
 
 function hideAdditionalHealthSection(afterSeconds = 0) {
     setTimeout( () => {
-      healthExtraInfo.classList.remove('appear');
+      healthExtraInfo.classList.remove('appear-inline-block');
     }, afterSeconds)
 }
 

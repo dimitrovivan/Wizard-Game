@@ -51,7 +51,7 @@ function onAddKeyBoardValue(e) {
 
 function onTryAgain(e) {
     e.preventDefault();
-    gameOverSection.classList.remove('appear');
+    gameOverSection.classList.remove('appear-block');
     logo.classList.remove('hide');
     startSection.classList.remove('hide');
 }
@@ -72,8 +72,8 @@ function onStartGame(e) {
 
     startSection.classList.add('hide');
     logo.classList.add('hide');
-    healthSection.classList.add('appear');
-    scoreSection.classList.add('appear');
+    healthSection.classList.add('appear-inline-block');
+    scoreSection.classList.add('appear-inline-block');
     saveKeyboardControllers(allInputValues);
     showWizard();
     window.requestAnimationFrame(runGame);
