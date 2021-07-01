@@ -13,8 +13,8 @@ import wizardConfig from './config/wizard.js';
 loadSounds();
 
 const startSection = getDomElements.startSection();
-const shopSection = getDomElements.shopSection();
-const shopBtn = getDomElements.shopBtn();
+// const shopSection = getDomElements.shopSection();
+// const shopBtn = getDomElements.shopBtn();
 const gameOverSection = getDomElements.gameOverSection();
 const startBtn = getDomElements.startBtn();
 const tryAgainBtn = getDomElements.tryAgainBtn();
@@ -25,6 +25,7 @@ const logo = getDomElements.logo();
 const scoreSection = getDomElements.scoreSection();
 const score = getDomElements.score();
 
+// shopBtn.addEventListener('click', onShowShop);
 startSection.addEventListener('click', onClearInputValue);
 startSection.addEventListener('keydown', onAddKeyBoardValue)
 startBtn.addEventListener('click', onStartGame);
@@ -58,6 +59,10 @@ function onTryAgain(e) {
     startSection.classList.remove('hide');
 }
 
+// function onShowShop(e) {
+//     window.stop();
+// }
+
 function onStartGame(e) {
     e.preventDefault();
 
@@ -76,7 +81,7 @@ function onStartGame(e) {
     logo.classList.add('hide');
     healthSection.classList.add('appear-inline-block');
     scoreSection.classList.add('appear-inline-block');
-    shopSection.classList.add('appear-inline-block');
+    // shopSection.classList.add('appear-inline-block');
     saveKeyboardControllers(allInputValues);
     showWizard();
     window.requestAnimationFrame(runGame);
