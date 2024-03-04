@@ -13,15 +13,16 @@ Game | For Fun
     Each second alive === 1 score
     Each kill === 10 score
 
-  #### 2.You can adjust your controllers.
+  #### 2. You can adjust your controllers.
     Choose preferable controllers to move around and launch fireballs.
     
   #### 3. Level based
+  ```
   Level 1: 0 - 30s
   Level 2: 30s - 60s
   Level 3: 60s - 120s
   Level 4: 120s - infinite
-  
+  ```
   On each level the gameplay speed configuration is increased and becomes harder.
 
 ## Tech stack:
